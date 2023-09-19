@@ -1,4 +1,6 @@
 import Vimeo from '@vimeo/player';
+
+console.log('24');
 const iframe = document.querySelector('iframe');
 const player = new Vimeo(iframe);
 
