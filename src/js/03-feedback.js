@@ -22,7 +22,7 @@ function handlePageLoad() {
   }
 }
 
-form.addEventListener('input', _.throttle(handleInput, 1000));
+form.addEventListener('input', _.throttle(handleInput, 500));
 
 function handleInput(event) {
   const fieldName = event.target.getAttribute('name');
