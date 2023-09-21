@@ -3,7 +3,7 @@ import _ from 'lodash';
 const form = document.querySelector('.feedback-form');
 const emailInput = document.querySelector('input');
 const messageArea = document.querySelector('textarea');
-const submitBtn = form.lastElementChild;
+
 const LS_FORM_KEY = 'feedback-form-state';
 
 window.addEventListener('load', handlePageLoad);
@@ -38,12 +38,21 @@ form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
+  if (emailInput.value.trim() === '' || messageArea.value.trim() === '') {
+    window.alert('Seems like some fields are empty, please, fill in them!');
+    return;
+  }
   const submitData = {
     email: emailInput.value.trim(),
     message: messageArea.value.trim(),
   };
   console.log(submitData);
   localStorage.removeItem(LS_FORM_KEY);
-  emailInput.value = '';
-  messageArea.value = '';
+
+  event.currentTarget.reset();
+  for (key in submitData) {
+    delete submitData[key];
+  }
+  /*emailInput.value = '';
+  messageArea.value = '';*/
 }

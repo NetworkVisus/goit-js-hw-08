@@ -4,7 +4,6 @@ import _ from 'lodash';
 const LS_VIDEOTIME_KEY = 'videoplayer-current-time';
 const iframe = document.querySelector('iframe');
 const player = new Vimeo(iframe);
-
 window.addEventListener('load', restoreVideoPlaytime);
 
 player.on('timeupdate', _.throttle(handleCurrentTime, 1000));
